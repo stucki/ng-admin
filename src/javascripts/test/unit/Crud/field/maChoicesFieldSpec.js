@@ -53,19 +53,21 @@ describe('directive: choices-field', function() {
 
     it("should contain the choices from choicesFunc as options", function () {
         var choices = [
-            {label: 'foo', value: 'bar'},
-            {label: 'baz', value: 'bazValue'}
+            { label: 'foo', value: 'bar' },
+            { label: 'baz', value: 'bazValue' }
         ];
-        scope.field = new ChoiceField().choices(function(entry) {
+        scope.field = new ChoiceField().choices(function() {
             return choices;
         });
+
         var element = $compile(directiveUsage)(scope);
         scope.$digest();
+
         var options = element.find('option');
         expect(options[0].label).toEqual('foo');
-        expect(options[0].value).toEqual('0');
+        expect(options[0].value).toEqual('string:bar');
         expect(options[1].label).toEqual('baz');
-        expect(options[1].value).toEqual('1');
+        expect(options[1].value).toEqual('string:bazValue');
     });
 
     it("should contain the choices as options", function () {
@@ -77,9 +79,9 @@ describe('directive: choices-field', function() {
         scope.$digest();
         var options = element.find('option');
         expect(options[0].label).toEqual('foo');
-        expect(options[0].value).toEqual('0');
+        expect(options[0].value).toEqual('string:bar');
         expect(options[1].label).toEqual('baz');
-        expect(options[1].value).toEqual('1');
+        expect(options[1].value).toEqual('string:bazValue');
     });
 
     it("should have the options with the bounded value selected", function () {
@@ -91,12 +93,13 @@ describe('directive: choices-field', function() {
         scope.value = ['fooValue', 'bazValue'];
         var element = $compile(directiveUsage)(scope);
         scope.$digest();
+
         var options = element.find('option');
-        expect(options[0].value).toEqual('0');
+        expect(options[0].value).toEqual('string:fooValue');
         expect(options[0].selected).toBeTruthy();
-        expect(options[1].value).toEqual('1');
+        expect(options[1].value).toEqual('string:barValue');
         expect(options[1].selected).toBeFalsy();
-        expect(options[2].value).toEqual('2');
+        expect(options[2].value).toEqual('string:bazValue');
         expect(options[2].selected).toBeTruthy();
     });
 });
