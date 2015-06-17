@@ -207,6 +207,11 @@
                     .label('Post')
                     .targetEntity(post)
                     .targetField(nga.field('title'))
+                    .filters(function(search) {
+                        return {
+                            q: search
+                        };
+                    })
             ])
             .listActions(['edit', 'delete']);
 
