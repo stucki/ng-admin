@@ -740,6 +740,9 @@ Add filters to the referenced results list. It may be either an object or a func
 * `refreshDelay`
 Wait at least `refreshDelay` milliseconds between two API calls. Default: 500ms.
 
+If this field is set to `null`, all references are retrieved (within the `perPage` parameter range) and stored locally at view
+initialization. No more API requests would be made during auto-completion time.
+
 * `perPage(integer)`
 Define the maximum number of elements fetched and displayed in the list.
 
@@ -826,6 +829,9 @@ Add filters to the referenced results list. It may be either an object or a func
 
 * `refreshDelay`
 Wait at least `refreshDelay` milliseconds between two API calls. Default: 500ms.
+
+If this field is set to `null`, all references are retrieved (within the `perPage` parameter range) and stored locally at view
+initialization. No more API requests would be made during auto-completion time.
 
 ## Contributing
 
